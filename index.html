@@ -4,69 +4,311 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Portfolio Card</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        
+        .portfolio-card {
+            text-align: center;
+            color: #6a4a3a;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 25px;
+            font-size: 32px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .portfolio-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #6a4a3a, #c9a992);
+            border-radius: 2px;
+        }
+        
+        .card {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .profile {
+            display: block;
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid #f8f1e9;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .name {
+            color: #333;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 5px;
+            font-size: 32px;
+        }
+        
+        .profession {
+            color: #6a4a3a;
+            font-weight: 500;
+            font-size: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .social {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #f8f1e9;
+            color: #6a4a3a;
+            margin: 0 12px;
+            text-decoration: none;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .social a:hover {
+            background: #6a4a3a;
+            color: white;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(106, 74, 58, 0.3);
+        }
+        
+        section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 15px;
+            background: #fdfaf7;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        h3 {
+            color: #6a4a3a;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 15px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0e6dd;
+        }
+        
+        h3::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #6a4a3a;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .me {
+            padding-left: 10px;
+            line-height: 1.7;
+        }
+        
+        ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+            padding-left: 28px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        li:hover {
+            transform: translateX(5px);
+        }
+        
+        li::before {
+            content: "➣";
+            color: #6a4a3a;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .contact {
+            display: block;
+            margin: 40px auto;
+            background: linear-gradient(to right, #6a4a3a, #c9a992);
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(106, 74, 58, 0.3);
+        }
+        
+        .contact:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(106, 74, 58, 0.4);
+        }
+        
+        .contact a {
+            color: white;
+            font-weight: 500;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            .portfolio-card {
+                font-size: 28px;
+            }
+            
+            .name {
+                font-size: 28px;
+            }
+            
+            .profile {
+                width: 160px;
+                height: 160px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .portfolio-card {
+                font-size: 24px;
+            }
+            
+            .name {
+                font-size: 24px;
+            }
+            
+            .profession {
+                font-size: 18px;
+            }
+            
+            .social a {
+                width: 40px;
+                height: 40px;
+                margin: 0 8px;
+            }
+            
+            .contact {
+                padding: 14px 35px;
+            }
+            
+            section {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-    <h2 class="portfolio-card">My Portfolio Card</h2>
-    <div class="card">
-        <img src="me.jpg" alt="Genny's Photo" class="profile">
-        <h1 class="name">Nicholas Genevieve</h1>
-        <p class="profession">Web Developer</p>
-    </div>
-    <div class="social">
-    <a href="#"><i class="fa fa-github"></i></a>
-    <a href="#"><i class="fa fa-linkedin"></i></a>
-    <a href="#"><i class="fa fa-twitter"></i></a>
-    </div>
-    <!-- About Setion -->
-     <section>
-        <h3>About Me</h3>
-        <p class="me">My name is Nicholas Genevieve and  i am a student of Jephthah's web development class.</p>
-     </section>
-    <!-- Skills Section -->
-      <section>
-        <h3>Skills</h3>
-        <ul>
-            <li>Graphics Designer</li>
-            <li>UI/UX Designer</li>
-            <li>Catering Services</li>
-            <li>Hair Dressing</li> 
-            <li>Tailoring</li>
-            <li>Bead Making</li>
-            <li>Web Developer</li>
-        </ul>
-      </section>
-    <!-- Education Sectionn -->
-       <section>
-        <h3>Education</h3>
-        <ul>
-            <li>Senior Secondary School</li>
-            <li>Tutorial Haven Web Dev Class</li>
-        </ul>
-       </section>
-    <!-- Projects Section -->
-     <section>
-        <h3>Projects</h3>
-        <ul>
-            <li>Movie website</li>
-            <li>Personal Portfolio Website</li>
-            <li>Rotating Gallery</li>
-            <li>Booking Site</li>
-        </ul>
-     </section>
-    <!-- Achievements Section -->
-     <section>
-        <h3>Achievements</h3>
-        <ul>
-            <li>Completed Web Dev Class</li>
-            <li>Won a SWE Competition</li>
-            <li>Have a Graphics Design Certificate</li>
-        </ul>
-     </section>
-    <!-- Contact Button -->
-     <button class="contact"><a href="tel:2349084255300">Contact Me</a></button>
+        <h2 class="portfolio-card">My Portfolio Card</h2>
+        <div class="card">
+            <img src="me.jpg" alt="Genny's Photo" class="profile">
+            <h1 class="name">Nicholas Genevieve</h1>
+            <p class="profession">Web Developer</p>
+        </div>
+        <div class="social">
+            <a href="#"><i class="fa fa-github"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+        </div>
+        
+        <!-- About Section -->
+        <section>
+            <h3>About Me</h3>
+            <p class="me">My name is Nicholas Genevieve and I am a student of Jephthah's web development class. I'm passionate about creating beautiful and functional websites and have a diverse set of skills ranging from web development to creative arts.</p>
+        </section>
+        
+        <!-- Skills Section -->
+        <section>
+            <h3>Skills</h3>
+            <ul>
+                <li>Graphics Designer</li>
+                <li>UI/UX Designer</li>
+                <li>Catering Services</li>
+                <li>Hair Dressing</li> 
+                <li>Tailoring</li>
+                <li>Bead Making</li>
+                <li>Web Developer</li>
+            </ul>
+        </section>
+        
+        <!-- Education Section -->
+        <section>
+            <h3>Education</h3>
+            <ul>
+                <li>Senior Secondary School</li>
+                <li>Tutorial Haven Web Dev Class</li>
+            </ul>
+        </section>
+        
+        <!-- Projects Section -->
+        <section>
+            <h3>Projects</h3>
+            <ul>
+                <li>Movie website</li>
+                <li>Personal Portfolio Website</li>
+                <li>Rotating Gallery</li>
+                <li>Booking Site</li>
+            </ul>
+        </section>
+        
+        <!-- Achievements Section -->
+        <section>
+            <h3>Achievements</h3>
+            <ul>
+                <li>Completed Web Dev Class</li>
+                <li>Won a SWE Competition</li>
+                <li>Have a Graphics Design Certificate</li>
+            </ul>
+        </section>
+        
+        <!-- Contact Button -->
+        <button class="contact"><a href="tel:2349084255300">Contact Me</a></button>
     </div>
 </body>
 </html>
